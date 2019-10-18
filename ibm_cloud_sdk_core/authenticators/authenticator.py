@@ -17,8 +17,7 @@
 from abc import ABC, abstractmethod
 
 class Authenticator(ABC):
-    """This interface defines the common methods and constants associated with an Authenticator implementation.
-    """
+    """This interface defines the common methods and constants associated with an Authenticator implementation."""
     @abstractmethod
     def authenticate(self, req: dict):
         """Perform the necessary authentication steps for the specified request.

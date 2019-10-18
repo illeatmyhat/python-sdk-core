@@ -13,7 +13,7 @@
 # WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
 # See the License for the specific language governing permissions and
 # limitations under the License.
-import requests
+from requests import Response
 from typing import Optional
 
 
@@ -32,7 +32,7 @@ class ApiException(Exception):
         global_transaction_id (str, optional): Globally unique id the service endpoint has given a transaction.
     """
 
-    def __init__(self, code: int, message: Optional[str] = None, http_response: Optional[requests.Response] = None):
+    def __init__(self, code: int, message: Optional[str] = None, http_response: Optional[Response] = None):
         # Call the base class constructor with the parameters it needs
         super(ApiException, self).__init__(message)
         self.message = message
@@ -49,7 +49,7 @@ class ApiException(Exception):
             msg += ' , X-global-transaction-id: ' + str(self.global_transaction_id)
         return  msg
 
-    def _get_error_message(self, response: requests.Response):
+    def _get_error_message(self, response: Response):
         error_message = 'Unknown error'
         try:
             error_json = response.json()

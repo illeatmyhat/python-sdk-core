@@ -17,7 +17,7 @@
 from .authenticator import Authenticator
 from ..iam_token_manager import IAMTokenManager
 from ..utils import has_bad_first_or_last_char
-import requests
+from requests import Request
 from typing import Dict, Optional
 
 
@@ -90,7 +90,7 @@ class IAMAuthenticator(Authenticator):
             raise ValueError(
                 'Both client_id and client_secret should be initialized.')
 
-    def authenticate(self, req: requests.Request):
+    def authenticate(self, req: Request):
         """Adds IAM authentication information to the request.
 
         The IAM bearer token will be added to the request's headers in the form:

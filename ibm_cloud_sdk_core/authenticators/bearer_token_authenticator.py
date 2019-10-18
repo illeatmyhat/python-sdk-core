@@ -15,7 +15,7 @@
 # limitations under the License.
 
 from .authenticator import Authenticator
-import requests
+from requests import Request
 
 class BearerTokenAuthenticator(Authenticator):
     """The BearerTokenAuthenticator will add a user-supplied bearer token
@@ -48,7 +48,7 @@ class BearerTokenAuthenticator(Authenticator):
         if self.bearer_token is None:
             raise ValueError('The bearer token shouldn\'t be None.')
 
-    def authenticate(self, req: requests.Request):
+    def authenticate(self, req: Request):
         """Adds bearer authentication information to the request.
 
         The bearer token will be added to the request's headers in the form:

@@ -17,7 +17,7 @@
 from .authenticator import Authenticator
 from ..utils import has_bad_first_or_last_char
 import base64
-import requests
+from requests import Request
 
 
 class BasicAuthenticator(Authenticator):
@@ -58,7 +58,7 @@ class BasicAuthenticator(Authenticator):
                 'The username and password shouldn\'t start or end with curly brackets or quotes. '
                 'Please remove any surrounding {, }, or \" characters.')
 
-    def authenticate(self, req: requests.Request):
+    def authenticate(self, req: Request):
         """Add basic authentication information to a request.
 
         Basic Authorization will be added to the request's headers in the form:

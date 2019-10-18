@@ -17,7 +17,7 @@
 from .authenticator import Authenticator
 from ..cp4d_token_manager import CP4DTokenManager
 from ..utils import has_bad_first_or_last_char
-import requests
+from requests import Request
 from typing import Dict, Optional
 
 
@@ -87,7 +87,7 @@ class CloudPakForDataAuthenticator(Authenticator):
                 'The url shouldn\'t start or end with curly brackets or quotes. '
                 'Please remove any surrounding {, }, or \" characters.')
 
-    def authenticate(self, req: requests.Request):
+    def authenticate(self, req: Request):
         """Adds CP4D authentication information to the request.
 
         The CP4D bearer token will be added to the request's headers in the form:
