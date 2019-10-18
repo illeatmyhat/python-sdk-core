@@ -39,7 +39,7 @@ from .bearer_token_authenticator import BearerTokenAuthenticator
 from .cp4d_authenticator import CloudPakForDataAuthenticator
 from .iam_authenticator import IAMAuthenticator
 from .no_auth_authenticator import NoAuthAuthenticator
-
+from ..utils import read_external_sources
 
 def get_authenticator_from_environment(service_name: str) -> Authenticator:
     """Look for external configuration of authenticator.
@@ -55,7 +55,6 @@ def get_authenticator_from_environment(service_name: str) -> Authenticator:
     Returns:
         The authenticator found from service information.
     """
-    from ..utils import read_external_sources
     authenticator = None
     config = read_external_sources(service_name)
     if config:
