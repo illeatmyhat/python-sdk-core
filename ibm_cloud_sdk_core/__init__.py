@@ -35,4 +35,4 @@ from .iam_token_manager import IAMTokenManager
 from .jwt_token_manager import JWTTokenManager
 from .cp4d_token_manager import CP4DTokenManager
 from .api_exception import ApiException
-from .utils import datetime_to_string, string_to_datetime, get_authenticator_from_environment, read_external_sources
+from .utils import datetime_to_string, string_to_datetime, read_external_sources
