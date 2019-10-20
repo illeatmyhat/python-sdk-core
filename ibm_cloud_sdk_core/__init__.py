@@ -25,7 +25,6 @@ classes:
 functions:
     datetime_to_string: Serializes a datetime to a string.
     string_to_datetime: De-serializes a string to a datetime.
-    get_authenticator_from_environment: Get authenticator from external sources.
     read_external_sources: Get config object from external sources.
 """
 

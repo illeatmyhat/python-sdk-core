@@ -31,6 +31,9 @@ classes:
   CloudPakForDataAuthenticator: Authenticator for passing CP4D authentication information to service endpoint.
   IAMAuthenticator: Authenticator for passing IAM authentication information to service endpoint.
   NoAuthAuthenticator: Performs no authentication. Useful for testing purposes.
+
+functions:
+  get_authenticator_from_environment: Get authenticator from external sources.
 """
 
 from .authenticator import Authenticator
