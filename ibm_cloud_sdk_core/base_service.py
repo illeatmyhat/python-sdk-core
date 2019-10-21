@@ -22,7 +22,7 @@ from requests.structures import CaseInsensitiveDict
 import sys
 from typing import Dict, List, Optional, Tuple, Union
 from .version import __version__
-from .utils import has_bad_first_or_last_char, remove_null_values, cleanup_values, read_from_credential_file, read_from_env_variables, read_from_vcap_services
+from .utils import has_bad_first_or_last_char, remove_null_values, cleanup_values, read_external_sources
 from .detailed_response import DetailedResponse
 from .api_exception import ApiException
 from ibm_cloud_sdk_core.authenticators import Authenticator
@@ -101,19 +101,9 @@ class BaseService(object):
         Returns:
             A dictionary containing relevant configuration for the service if found.
         """
-        config = {}
-
-        config = read_from_credential_file(service_name)
-
-        if not config:
-            config = read_from_env_variables(service_name)
-
-        if not config:
-            config = read_from_vcap_services(service_name)
-
+        config = read_external_sources(service_name)
         self.service_url = config.get('URL')
         self.disable_ssl_verification = config.get('DISABLE_SSL')
-
 
     def _set_user_agent_header(self, user_agent_string=None):
         self.user_agent_header = {'User-Agent': user_agent_string}
