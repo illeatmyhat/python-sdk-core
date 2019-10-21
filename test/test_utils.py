@@ -1,5 +1,4 @@
-from ibm_cloud_sdk_core import string_to_datetime, datetime_to_string
-from ibm_cloud_sdk_core.authenticators import get_authenticator_from_environment
+from ibm_cloud_sdk_core import string_to_datetime, datetime_to_string, get_authenticator_from_environment
 import os
 
 def test_datetime_conversion():
