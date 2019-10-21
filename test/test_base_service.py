@@ -8,8 +8,8 @@ import jwt
 from ibm_cloud_sdk_core import BaseService
 from ibm_cloud_sdk_core import ApiException
 from ibm_cloud_sdk_core import CP4DTokenManager
-from ibm_cloud_sdk_core import get_authenticator_from_environment
 from ibm_cloud_sdk_core.authenticators import IAMAuthenticator, NoAuthAuthenticator, Authenticator, BasicAuthenticator, CloudPakForDataAuthenticator
+from ibm_cloud_sdk_core import get_authenticator_from_environment
 
 
 class AnyServiceV1(BaseService):
