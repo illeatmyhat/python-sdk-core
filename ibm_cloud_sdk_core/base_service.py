@@ -35,7 +35,7 @@ import logging
 # http_client.HTTPConnection.debuglevel = 1
 
 class BaseService(object):
-    """Abstract class for common functionality between generated services.
+    """Common functionality shared by generated service classes.
 
     The base service authenticates requests via its authenticator, stores cookies, and
     wraps responses from the service endpoint in DetailedResponse or APIException objects.

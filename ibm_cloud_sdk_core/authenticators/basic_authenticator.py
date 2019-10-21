@@ -39,6 +39,9 @@ class BasicAuthenticator(Authenticator):
     def __init__(self, username: str, password: str):
         self.username = username
         self.password = password
+        self.validate()
+        self.authorization_header = self.construct_basic_auth_header(username, password)
+
 
     def validate(self):
         """Validate username and password.
@@ -57,6 +60,13 @@ class BasicAuthenticator(Authenticator):
                 'The username and password shouldn\'t start or end with curly brackets or quotes. '
                 'Please remove any surrounding {, }, or \" characters.')
 
+
+    def construct_basic_auth_header(self, username: str, password: str):
+        authstring = "{0}:{1}".format(self.username, self.password)
+        base64_authorization = base64.b64encode(authstring.encode('utf-8')).decode('utf-8')
+        return 'Basic {0}'.format(base64_authorization)
+
+
     def authenticate(self, req: Request):
         """Add basic authentication information to a request.
 
@@ -68,9 +78,6 @@ class BasicAuthenticator(Authenticator):
             req: The request to add basic auth information too. Must contain a key to a dictionary
             called headers.
         """
-        self.validate()
-        authstring = "{0}:{1}".format(self.username, self.password)
-        base64_authorization = base64.b64encode(authstring.encode('utf-8')).decode('utf-8')
 
         headers = req.get('headers')
-        headers['Authorization'] = 'Basic {0}'.format(base64_authorization)
+        headers['Authorization'] = self.authorization_header
